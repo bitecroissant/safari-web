@@ -21,6 +21,8 @@ svg { display: block; max-width: 100%; }
 
 input, button, textarea, select { font: inherit; }
 
+input { display: block; }
+
 h1, h2, h3, h4, h5, h6 {
   color: var(--color-text-header);
   line-height: var(--line-height-headers);
