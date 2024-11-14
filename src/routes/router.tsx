@@ -1,6 +1,7 @@
 import { createBrowserRouter, Outlet } from "react-router-dom";
 import { Root } from "../components/Root";
-import { Admin } from "../pages/Admin";
+import { SolarTerms } from "../pages/SolarTermsPage";
+import { EventDates } from "../pages/EventDatesPage";
 
 export const router = createBrowserRouter([
     { path: '/', element: <Root /> },
@@ -9,9 +10,13 @@ export const router = createBrowserRouter([
         element: <Outlet />,
         children: [
             {
-                path: '/admin',
-                element: <Admin />
-            }
+                path: '/solar-terms',
+                element: <SolarTerms />,
+            },
+            {
+                path: '/event-dates',
+                element: <EventDates />,
+            },
         ]
     }
 ])
