@@ -16,7 +16,7 @@ export const PoetryLinesPage: React.FC = () => {
         fetchPoetryList()
     }, [])
 
-    const { register, handleSubmit, watch, formState: { errors } } = useForm<PoetryLinesType>()
+    const { register, handleSubmit, formState: { errors } } = useForm<PoetryLinesType>()
     const createPoetryLine: SubmitHandler<PoetryLinesType> = (formData) => {
         console.log(formData)
         post("/poetry_line", formData)
