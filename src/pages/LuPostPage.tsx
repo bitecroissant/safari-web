@@ -45,13 +45,10 @@ export const LuPostPage: React.FC = () => {
                 p="[var(--space-xs)] [var(--space-m)]" bg="[var(--color-white)]" rounded="[var(--border-radius)]" shadow="[var(--shadow-small)]"
             >
                 <Input fieldsName="line" register={register} options={{ required: true }} formState={formState} labelName="诗句" placeholder="诗句, 比如：床前明月光" />
-                <Input fieldsName="author" register={register} formState={formState} labelName="作者" placeholder="作者, 比如：李白字太白" />
-                <Input fieldsName="dynasty" register={register} formState={formState} labelName="朝代" placeholder="朝代,比如：唐" />
-                <Input fieldsName="title" register={register} formState={formState} labelName="标题" placeholder="标题,比如： 静夜思" />
-
+            
                 <div flex gap-x="[--space-l]" p="[var(--space-xs)]" >
                     <button type="submit" className="btn btn--secondary">
-                        {loading ? <Icon name="loading" className="animate-spin" /> : <Icon name="right" />}
+                        {loading ? <Icon name="loading" className="animate-spin" /> : "一键投递"}
                     </button>
                 </div>
             </form>
