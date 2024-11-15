@@ -1,0 +1,14 @@
+.input {
+    display: block;
+    width: 65%;
+    max-width: 100%;
+    padding: var(--space-xxs) var(--space-xs);
+    border: var(--border);
+    border-radius: var(--border-radius);
+    outline: none;
+    transition: box-shadow .25s;
+
+    &:focus {
+        box-shadow: 0 0 0 2px var(--color-glint);
+    }
+}

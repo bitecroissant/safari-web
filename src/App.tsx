@@ -2,6 +2,10 @@ import { RouterProvider } from "react-router-dom"
 import { router } from "./routes/router"
 import "./assets/stylesheets/application.scss"
 import 'virtual:uno.css'
+// @ts-ignore
+import 'virtual:svgsprites'
+// toast
+import 'react-toastify/dist/ReactToastify.css';
 
 export const App = () => {
 
