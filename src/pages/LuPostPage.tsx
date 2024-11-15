@@ -16,8 +16,9 @@ export const LuPostPage: React.FC = () => {
     const { register, handleSubmit, formState, reset } = useForm<PoetryLinesType>()
     const createPoetryLine: SubmitHandler<PoetryLinesType> = async (formData) => {
         setLoading(true)
+        console.log(formData)
         try {
-            await post("/poetry_line", { ...formData, createBy: "lu" })
+            await post("/poetry_line", { ...formData, showDate: '', createBy: "lu" })
             setTimeout(() => {
                 setLoading(false)
                 reset()
