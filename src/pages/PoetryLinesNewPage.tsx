@@ -30,13 +30,11 @@ export const PoetryLinesNewPage: React.FC<Props> = (props: Props) => {
             setLoading(false)
         }
     }
-    // const x = (e: React.MouseEvent) => {
-    //     e.preventDefault()
-    // }
+  
     return (
         <>
             <ToastContainer />
-            <h1>录一行诗句</h1>
+            <h1>陆陆投递窗</h1>
             <form onSubmit={handleSubmit(createPoetryLine)}
                 mt="[var(--space-m)]"
                 p="[var(--space-xs)] [var(--space-m)]" bg="[var(--color-white)]" rounded="[var(--border-radius)]" shadow="[var(--shadow-small)]"
