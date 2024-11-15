@@ -1,4 +1,6 @@
+// @ts-ignore
 import path from 'path'
+// @ts-ignore
 import fs from 'fs'
 // @ts-ignore
 import store from 'svgstore'
