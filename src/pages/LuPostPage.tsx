@@ -2,7 +2,7 @@ import { useEffect, useState } from "react"
 import { useAjax } from "../lib/ajax"
 import { PoetryLinesNewPage } from "./PoetryLinesNewPage"
 
-export const PoetryLinesPage: React.FC = () => {
+export const LuPostPage: React.FC = () => {
 
     const [data, setData] = useState<PoetryLinesType[]>()
 
@@ -19,16 +19,7 @@ export const PoetryLinesPage: React.FC = () => {
     return (
         <>
             <header></header>
-            <PoetryLinesNewPage afterPost={fetchPoetryList} creator="gua"/>
-            <ul>
-                {data?.map(({ id, line }) => {
-                    return (
-                        <li key={id}>
-                            {line}
-                        </li>
-                    )
-                })}
-            </ul>
+            <PoetryLinesNewPage creator="lu" />
         </>
     )
 }

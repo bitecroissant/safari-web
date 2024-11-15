@@ -3,6 +3,7 @@ import { Root } from "../components/Root";
 import { SolarTerms } from "../pages/SolarTermsPage";
 import { EventDates } from "../pages/EventDatesPage";
 import { PoetryLinesPage } from "../pages/PoetryLinesPage";
+import { LuPostPage } from "../pages/LuPostPage";
 
 export const router = createBrowserRouter([
     { path: '/', element: <Root /> },
@@ -22,6 +23,10 @@ export const router = createBrowserRouter([
                 path: '/poetry-lines',
                 element: <PoetryLinesPage />,
             },
+            {
+                path: '/lulupo',
+                element: <LuPostPage />,
+            }
         ]
     }
 ], {

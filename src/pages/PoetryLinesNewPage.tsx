@@ -6,11 +6,12 @@ import { SubmitHandler, useForm } from "react-hook-form"
 import { ToastContainer, toast } from "react-toastify"
 
 type Props = {
-    afterPost: () => void
+    afterPost?: () => void
+    creator: string
 }
 
 export const PoetryLinesNewPage: React.FC<Props> = (props: Props) => {
-    const { afterPost } = props
+    const { afterPost, creator } = props
     const [loading, setLoading] = useState(false)
     const { post } = useAjax()
 
@@ -18,20 +19,20 @@ export const PoetryLinesNewPage: React.FC<Props> = (props: Props) => {
     const createPoetryLine: SubmitHandler<PoetryLinesType> = async (formData) => {
         setLoading(true)
         try {
-            await post("/poetry_line", formData)
+            await post("/poetry_line", { ...formData, createBy: creator })
             setTimeout(() => {
                 setLoading(false)
                 reset()
-                toast("投递成功");
-                afterPost()
-            }, 2222)
+                toast("👌 已经将诗句暴扣至瓜瓜的狗头...");
+                afterPost?.()
+            }, 1222)
         } catch (err) {
             setLoading(false)
         }
     }
-    const x = (e: React.MouseEvent) => {
-        e.preventDefault()
-    }
+    // const x = (e: React.MouseEvent) => {
+    //     e.preventDefault()
+    // }
     return (
         <>
             <ToastContainer />
@@ -47,9 +48,9 @@ export const PoetryLinesNewPage: React.FC<Props> = (props: Props) => {
                 <Input fieldsName="showDate" register={register} formState={formState} labelName="期望展示时间" placeholder="期望展示时间, 比如：2024-11-15" />
 
                 <div flex gap-x="[--space-l]" p="[var(--space-xs)]" >
-                    <button onClick={x} className="btn btn--light" >
+                    {/* <button onClick={x} className="btn btn--light" >
                         <Icon name="error" />
-                    </button>
+                    </button> */}
                     <button type="submit" className="btn btn--secondary">
                         {loading ? <Icon name="loading" className="animate-spin" /> : <Icon name="right" />}
                     </button>
