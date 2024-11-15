@@ -1,6 +1,5 @@
 import { useEffect, useState } from "react"
 import { useAjax } from "../lib/ajax"
-import { PoetryLinesNewPage } from "./PoetryLinesNewPage"
 import { Icon } from "../components/Icon"
 import s from "./LuPostPage.module.scss"
 import c from "classnames"
