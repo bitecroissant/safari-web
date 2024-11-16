@@ -25,6 +25,7 @@ export const PoetryLinesEditPage: React.FC = () => {
     const { patch } = useAjax()
     const [loading, setLoading] = useState(false)
     const updatePoetryLine: SubmitHandler<PoetryLinesType> = async (formData) => {
+        if (loading) return
         setLoading(true)
         try {
             await patch("/poetry_line", { ...formData, id: formData.id + '' })

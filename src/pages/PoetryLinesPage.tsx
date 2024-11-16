@@ -39,6 +39,8 @@ export const PoetryLinesPage: React.FC = () => {
 
     const [groupedPoetryLine, setGroupedPoetryLine] = useState<GroupedPoetryLine>({})
     const [loading, setLoading] = useState(false)
+    const [killing, setKilling] = useState(false)
+    const [destorying, setDestorying] = useState(false)
 
     const { get, destory } = useAjax()
     const fetchPoetryList = async () => {
@@ -72,15 +74,29 @@ export const PoetryLinesPage: React.FC = () => {
     }, [])
 
     const kill = async (id: number) => {
-        await destory(`/poetry_line?id=${id}&kill=true`)
-        toast("😶‍🌫️ 删掉了");
-        fetchPoetryList()
+        if (killing) return
+        try {
+            setKilling(true)
+            await destory(`/poetry_line?id=${id}&kill=true`)
+            toast("😶‍🌫️ 删掉了");
+            setKilling(false)
+            fetchPoetryList()
+        } catch (err) {
+            setKilling(false)
+        }
     }
 
     const delate = async (id: number) => {
-        await destory(`/poetry_line?id=${id}`)
-        toast("😶‍🌫️ 删掉了");
-        fetchPoetryList()
+        if (destorying) return
+        try {
+            setDestorying(true)
+            await destory(`/poetry_line?id=${id}`)
+            toast("😶‍🌫️ 删掉了");
+            setDestorying(false)
+            fetchPoetryList()
+        } catch (err) {
+            setDestorying(false)
+        }
     }
 
     const edit = (item: PoetryLinesType) => {
@@ -113,8 +129,12 @@ export const PoetryLinesPage: React.FC = () => {
                                             <span h-14px leading-14px text="yellow">{id}</span>
                                         </div>
                                         <div flex justify-end>
-                                            <button className="btn btn--primary text-14px" onClick={() => kill(id)}> 真删 </button>
-                                            <button className="btn btn--light text-14px ml-8px" onClick={() => delate(id)}> 假删 </button>
+                                            <button className="btn btn--primary text-14px" onClick={() => kill(id)}>
+                                                {killing ? <Icon name="loading" className="animate-spin" /> : '真删'}
+                                            </button>
+                                            <button className="btn btn--light text-14px ml-8px" onClick={() => delate(id)}>
+                                                {destorying ? <Icon name="loading" className="animate-spin" /> : '假删'}
+                                            </button>
                                             <button className="btn btn--secondary text-14px ml-8px" onClick={() => edit(item)}>更新</button>
                                         </div>
                                         <div flex flex-wrap items-center gap-x-8px text-12px mt="8px">
