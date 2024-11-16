@@ -1,4 +1,4 @@
-import { ReactHTMLElement, useState } from "react"
+import { useState } from "react"
 import { Icon } from "../components/Icon"
 import { Input } from "../components/Input"
 import { useAjax } from "../lib/ajax"
