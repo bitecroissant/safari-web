@@ -13,6 +13,7 @@ type PoetryLinesType = {
 	dynasty: string
 	title: string
 	showDate: string
+	createBy: string
 }
 
 type EventDatesTypes = {
