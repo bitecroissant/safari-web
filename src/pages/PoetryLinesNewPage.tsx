@@ -3,7 +3,7 @@ import { Icon } from "../components/Icon"
 import { Input } from "../components/Input"
 import { useAjax } from "../lib/ajax"
 import { SubmitHandler, useForm } from "react-hook-form"
-import { ToastContainer, toast } from "react-toastify"
+import { toast } from "react-toastify"
 
 type Props = {
     afterPost?: () => void
@@ -22,12 +22,10 @@ export const PoetryLinesNewPage: React.FC<Props> = (props: Props) => {
         setLoading(true)
         try {
             await post("/poetry_line", { ...formData, createBy: creator })
-            setTimeout(() => {
-                setLoading(false)
-                reset()
-                toast("👌 已经将诗句暴扣至瓜瓜的狗头...");
-                afterPost?.()
-            }, 1222)
+            setLoading(false)
+            reset()
+            toast("👌 已经将诗句暴扣至瓜瓜的狗头...");
+            afterPost?.()
         } catch (err) {
             setLoading(false)
         }
@@ -44,9 +42,8 @@ export const PoetryLinesNewPage: React.FC<Props> = (props: Props) => {
 
     return (
         <>
-            <ToastContainer />
             {
-                isFold ? (<button className="btn btn--light" onClick={unfold} > 
+                isFold ? (<button className="btn btn--light" onClick={unfold} >
                     展开
                 </button>) : (<form onSubmit={handleSubmit(createPoetryLine)}
                     mt="[var(--space-m)]"

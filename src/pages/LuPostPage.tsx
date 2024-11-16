@@ -4,7 +4,7 @@ import { Icon } from "../components/Icon"
 import s from "./LuPostPage.module.scss"
 import c from "classnames"
 import { SubmitHandler, useForm } from "react-hook-form"
-import { toast, ToastContainer } from "react-toastify"
+import { toast } from "react-toastify"
 import { Input } from "../components/Input"
 
 export const LuPostPage: React.FC = () => {
@@ -21,7 +21,7 @@ export const LuPostPage: React.FC = () => {
                 setLoading(false)
                 reset()
                 toast("👌 已经将诗句暴扣至瓜瓜的狗头...");
-            }, 1222)
+            }, 1200)
         } catch (err) {
             setLoading(false)
         }
@@ -34,7 +34,7 @@ export const LuPostPage: React.FC = () => {
 
     return (
         <>
-            <ToastContainer autoClose={1500} />
+            
             <header>
                 <Icon name="lu-big2" className={c("h-200px w-auto", s.running)} />
             </header>

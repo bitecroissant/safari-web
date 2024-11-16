@@ -4,6 +4,7 @@ import { SolarTerms } from "../pages/SolarTermsPage";
 import { EventDates } from "../pages/EventDatesPage";
 import { PoetryLinesPage } from "../pages/PoetryLinesPage";
 import { LuPostPage } from "../pages/LuPostPage";
+import { PoetryLinesEditPage } from "../pages/PoetryLinesEditPage";
 
 export const router = createBrowserRouter([
     { path: '/', element: <Root /> },
@@ -22,6 +23,10 @@ export const router = createBrowserRouter([
             {
                 path: '/poetry-lines',
                 element: <PoetryLinesPage />,
+            },
+            {
+                path: '/poetry-lines/edit',
+                element: <PoetryLinesEditPage />,
             },
             {
                 path: '/lulupo',

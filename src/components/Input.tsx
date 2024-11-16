@@ -9,10 +9,11 @@ type Props<T extends FieldValues> = {
     register: UseFormRegister<T>
     options?: RegisterOptions<T, Path<T>>
     formState: FormState<T>
+    disabled?: boolean
 }
 
 export const Input = <T extends FieldValues>(props: Props<T>) => {
-    const { labelName, fieldsName, placeholder, register, options, formState: { errors } } = props
+    const { labelName, fieldsName, placeholder, register, options, formState: { errors }, disabled } = props
 
     return (
         <div flex items-center p="[var(--space-xs)]">
@@ -20,6 +21,7 @@ export const Input = <T extends FieldValues>(props: Props<T>) => {
             <input {...register(fieldsName, options)} id={fieldsName} placeholder={placeholder}
                 className={s.input}
                 style={{ borderColor: errors[fieldsName] ? 'var(--color-primary)' : '--var(--color-light)' }}
+                disabled={disabled}
             />
             {errors[fieldsName] && <div h="[var(--space-sm)]" ml="[var(--space-xs)]" color="[var(--color-primary)]" >🧙‍♀️ {labelName}必须填写哦</div>}
         </div>
