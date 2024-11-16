@@ -15,9 +15,8 @@ export const LuPostPage: React.FC = () => {
     const { register, handleSubmit, formState, reset } = useForm<PoetryLinesType>()
     const createPoetryLine: SubmitHandler<PoetryLinesType> = async (formData) => {
         setLoading(true)
-        console.log(formData)
         try {
-            await post("/poetry_line", { ...formData, showDate: '', createBy: "lu" })
+            await post("/poetry_line", { ...formData, showDate: '', createBy: "lu", author: '', dynasty: '', title: '',})
             setTimeout(() => {
                 setLoading(false)
                 reset()
@@ -35,10 +34,10 @@ export const LuPostPage: React.FC = () => {
 
     return (
         <>
+            <ToastContainer autoClose={1500} />
             <header>
                 <Icon name="lu-big2" className={c("h-200px w-auto", s.running)} />
             </header>
-            <ToastContainer />
             <h4>陆陆投递窗</h4>
             <form onSubmit={handleSubmit(createPoetryLine)}
                 mt="[var(--space-m)]"

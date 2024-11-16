@@ -59,9 +59,6 @@ export const PoetryLinesNewPage: React.FC<Props> = (props: Props) => {
                     <Input fieldsName="showDate" register={register} formState={formState} labelName="期望展示时间" placeholder="期望展示时间, 比如：2024-11-15" />
 
                     <div flex gap-x="[--space-l]" p="[var(--space-xs)]" >
-                        {/* <button onClick={x} className="btn btn--light" >
-                        <Icon name="error" />
-                    </button> */}
                         <button type="submit" className="btn btn--secondary">
                             {loading ? <Icon name="loading" className="animate-spin" /> : '新增一行'}
                         </button>

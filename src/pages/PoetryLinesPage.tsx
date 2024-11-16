@@ -3,6 +3,7 @@ import { useAjax } from "../lib/ajax"
 import { PoetryLinesNewPage } from "./PoetryLinesNewPage"
 import { time } from "../lib/time"
 import { toast, ToastContainer } from "react-toastify"
+import { Icon } from "../components/Icon"
 
 const SHOW_GROUP = ['todayAndAfter', 'notAssign', 'before']
 const SHOW_GROUP_NAME: { [k in typeof SHOW_GROUP[number]]: string } = {
@@ -36,7 +37,7 @@ export const PoetryLinesPage: React.FC = () => {
 
     const [groupedPoetryLine, setGroupedPoetryLine] = useState<GroupedPoetryLine>({})
 
-    const { get } = useAjax()
+    const { get, destory } = useAjax()
     const fetchPoetryList = async () => {
         const response = (await get<PoetryLinesType[]>("/poetry_lines")).data
         if (response && response.length > 0) {
@@ -57,6 +58,12 @@ export const PoetryLinesPage: React.FC = () => {
         }
     }
 
+    const kill = async (id: number) => {
+        await destory(`/poetry_line?id=${id}&kill=true`)
+        toast("😶‍🌫️ 删掉了");
+        fetchPoetryList()
+    }
+
     useEffect(() => {
         fetchPoetryList()
     }, [])
@@ -70,13 +77,17 @@ export const PoetryLinesPage: React.FC = () => {
                 return (
                     <section key={g} mt="[var(--space-xl)]">
                         <h4>{SHOW_GROUP_NAME[g]}</h4>
-                        <ul>
+                        <ul flex flex-wrap>
                             {groupedPoetryLine[g]?.map(({ id, gmtCreate, gmtModified, isDeleted, line, author, dynasty, title, showDate, createBy }) => {
                                 return (
                                     <li key={id}
-                                        mt="[var(--space-m)]" list-none
-                                        p="[var(--space-xs)] [var(--space-m)]" bg="[var(--color-white)]" rounded="[var(--border-radius)]" shadow="[var(--shadow-small)]" >
-                                        <div>{id}</div>
+                                        mt="[var(--space-m)]" list-none w="[var(--space-poetryline)]" max-w="[var(--space-poetryline)]"
+                                        p="[var(--space-xs)] [var(--space-m)]" bg="[var(--color-white)]" rounded="[var(--border-radius)]" shadow="[var(--shadow-small)]" 
+                                        flex flex-col
+                                    >
+                                        <div>{id}</div> <button onClick={() => kill(id)}>
+                                            <Icon name="error"></Icon>
+                                        </button>
                                         <div>{gmtCreate}</div>
                                         <div>{gmtModified}</div>
                                         <div>{isDeleted}</div>
