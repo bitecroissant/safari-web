@@ -11,6 +11,6 @@ export default defineConfig(({ command }: ConfigEnv) => ({
   plugins: [
     react(),
     UnoCSS(),
-    svgsprites({ noOptimizeList: ['lu-big', 'lu-big2'] }),
+    svgsprites({ noOptimizeList: ['lu-big', 'lu-big2', 'gua', 'lu'] }),
   ],
 }))
