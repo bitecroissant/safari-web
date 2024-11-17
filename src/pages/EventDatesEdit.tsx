@@ -2,7 +2,6 @@ import { useEffect, useState } from "react"
 import { useAjax } from "../lib/ajax"
 import { time } from "../lib/time"
 import { Icon } from "../components/Icon"
-import { EventDatesPageNew } from "./EventDatesNew"
 
 const iconNameMapper: Record<string, string> = {
     '瓜': 'gua',
@@ -33,7 +32,6 @@ export const EventDatesPage: React.FC = () => {
 
     return (
         <>
-            <EventDatesPageNew afterPost={fetchPageData}/>
             <ul
                 mt="[var(--space-xl)]"
                 flex flex-col flex-wrap gap-x="[var(--space-l)]"

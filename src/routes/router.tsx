@@ -1,7 +1,7 @@
 import { createBrowserRouter, Outlet } from "react-router-dom";
 import { Root } from "../components/Root";
 import { SolarTerms } from "../pages/SolarTermsPage";
-import { EventDates } from "../pages/EventDatesPage";
+import { EventDatesPage } from "../pages/EventDatesPage";
 import { PoetryLinesPage } from "../pages/PoetryLinesPage";
 import { LuPostPage } from "../pages/LuPostPage";
 import { PoetryLinesEditPage } from "../pages/PoetryLinesEditPage";
@@ -19,7 +19,7 @@ export const router = createBrowserRouter([
             },
             {
                 path: '/event-dates',
-                element: <EventDates />,
+                element: <EventDatesPage />,
             },
             {
                 path: '/poetry-lines',

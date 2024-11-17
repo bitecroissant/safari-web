@@ -25,7 +25,6 @@ export const DailyBoard: React.FC = () => {
                 return d.isDeleted === 0 && d.group !== 'solar_term'
             })
             setEventDates(filtered)
-            console.log(filtered)
         }
     }
 
