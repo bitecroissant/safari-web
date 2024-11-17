@@ -15,9 +15,7 @@ const today = time()
 today.removeTime()
 
 export const EventDatesPage: React.FC = () => {
-    const [loading, setLoading] = useState(false)
     const [killing, setKilling] = useState(false)
-    const [destorying, setDestorying] = useState(false)
 
     const { get, destory } = useAjax()
 
