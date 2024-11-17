@@ -3,6 +3,7 @@ import { useAjax } from "../lib/ajax"
 import { time } from "../lib/time"
 import { Icon } from "../components/Icon"
 import { EventDatesPageNew } from "./EventDatesNew"
+import { toast } from "react-toastify"
 
 const iconNameMapper: Record<string, string> = {
     '瓜': 'gua',
@@ -14,7 +15,11 @@ const today = time()
 today.removeTime()
 
 export const EventDatesPage: React.FC = () => {
-    const { get } = useAjax()
+    const [loading, setLoading] = useState(false)
+    const [killing, setKilling] = useState(false)
+    const [destorying, setDestorying] = useState(false)
+
+    const { get, destory } = useAjax()
 
     const [eventDates, setEventDates] = useState([] as EventDatesTypes[])
 
@@ -29,7 +34,18 @@ export const EventDatesPage: React.FC = () => {
         fetchPageData()
     }, [])
 
-
+    const kill = async (id: number) => {
+        if (killing) return
+        try {
+            setKilling(true)
+            await destory(`/event_date?id=${id}&kill=true`)
+            toast("😶‍🌫️ 删掉了");
+            setKilling(false)
+            fetchPageData()
+        } catch (err) {
+            setKilling(false)
+        }
+    }
 
     return (
         <>
@@ -40,6 +56,7 @@ export const EventDatesPage: React.FC = () => {
             >
                 {
                     eventDates.length > 0 && eventDates.map(d => {
+                        const { id } = d
                         return (<li key={d.id}
                             mt="[var(--space-xl)]" list-none
                             p="[var(--space-s)] [var(--space-m)]" bg="[var(--color-white)]" rounded="[var(--border-radius)]" shadow="[var(--shadow-small)]"
@@ -47,6 +64,10 @@ export const EventDatesPage: React.FC = () => {
                         >
                             <div absolute top="-10px" left="-10px">
                                 <Icon name={iconNameMapper[(d.group)] || 'gua'} className="text-20px"></Icon>
+                            </div>
+
+                            <div absolute top="-10px" right="-12px" p-4px onClick={() => kill(id)} rounded="50%" bg="[var(--color-primary)]" cursor-pointer >
+                                <Icon name="error" className="text-14px text-yellow"></Icon>
                             </div>
 
                             <div flex-1>
