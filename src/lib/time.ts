@@ -50,6 +50,28 @@ export class Time {
         return Math.abs(diffNaturalDays)
     }
 
+    // 闰年
+    isLeapYear() {
+        const year = this.year
+        return (year % 4 === 0 && year % 100 !== 0) || year % 400 === 0
+    }
+
+    get currentYearDaysCount() {
+        if (this.isLeapYear()) {
+            return 366
+        }
+        return 365
+    }
+
+    get dayOfYear() {
+        const startOfYear = new Date(new Date().getFullYear(), 0, 0)
+        // 计算今天是今年的第几天
+        const diff = this.timestamp - startOfYear.getTime()
+        const oneDay = 1000 * 60 * 60 * 24 // 毫秒数计算
+        const dayOfYear = Math.floor(diff / oneDay)
+        return dayOfYear
+    }
+
     // parts
     get parts(): Parts {
         const year = this.#date.getFullYear()

@@ -1,0 +1,21 @@
+.progressBar, .actualBar, .dot {
+    height: 14px;
+    border-radius: 7px;
+    background: var(--color-primary-rotate);
+    position: relative;
+}
+.actualBar{
+    position: absolute;
+    width: 0;
+    background: var(--color-primary);
+    transition: width 1.6s ease;
+}
+.dot {
+    position: absolute;
+    background: var(--color-primary);
+    width: 14px;
+    top: 0%;
+    transition: left 1.6s ease;
+    
+    border: 2px solid white;
+}
