@@ -37,7 +37,6 @@ export const DailyBoard: React.FC = () => {
 
     return (
         <>
-            <h5 mt="[var(--space-xl)]">2024 年</h5>
             <ProgressBar percentage={(time().dayOfYear / time().currentYearDaysCount) * 100} />
             <ul
                 mt="[var(--space-xl)]"

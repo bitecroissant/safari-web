@@ -17,6 +17,7 @@ export const ProgressBar: React.FC<Props> = ({ percentage = 0 }) => {
       <div className={s.progressBar}>
         <div className={s.actualBar} style={{ width: `${innerPercentage}%` }}></div>
         <div className={s.dot} style={{ left: innerPercentage === 0 ? 0 : `calc(${innerPercentage}% - 14px)` }}></div>
+        <h5 absolute top='0' style={{ left: innerPercentage > 50 ? '10px' : 'calc(100% - 60px)' }} text="[var(--color-tertiary)]">2024 年</h5>
       </div>
   )
 }
