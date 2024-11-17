@@ -3,16 +3,139 @@
 
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no,viewport-fit=cover">
+  <meta name="viewport"
+    content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no,viewport-fit=cover">
   <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
   <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
   <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
   <link rel="manifest" href="/site.webmanifest">
   <title>🏄 🏄 🏄</title>
+
+  <style>
+    .wrapperwrapper {
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      height: 100vh;
+      background: #111;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .wrapperwrapper>.wrapper {
+      --spin-animation-time: 3s;
+      --blod-border-width: 8px;
+      --blod-height: 70px;
+      --blod-blur: 10px;
+      width: 45%;
+      aspect-ratio: 1;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .wrapperwrapper>.wrapper>.shell {
+      display: grid;
+      position: relative;
+      animation: gua-default-spin infinite var(--spin-animation-time) linear;
+      grid-area: stack;
+    }
+
+    .wrapperwrapper>.wrapper>.shell>.blob {
+      --border-radius: 115% 140% 145% 110% / 125% 140% 110% 125%;
+      aspect-ratio: 1;
+      display: block;
+      grid-area: stack;
+      background-repeat: no-repeat;
+      background-position: center;
+      border: var(--blod-border-width) solid transparent;
+      border-radius: var(--border-radius, 50%);
+      mask-image:
+        linear-gradient(transparent, transparent),
+        linear-gradient(black, white);
+      mask-clip: padding-box, border-box;
+      mask-composite: intersect;
+      mix-blend-mode: screen;
+      height: var(--blod-height);
+      filter: blur(var(--blod-blur));
+    }
+
+    .wrapperwrapper>.wrapper>.shell>.blob:nth-child(1) {
+      background-color: hsl(240, 100%, 50%);
+      /* 亮蓝色 */
+      background-image: linear-gradient(hsl(240, 100%, 50%), hsl(240, 100%, 70%), hsl(240, 100%, 50%));
+      rotate: 30deg;
+      scale: 1.03;
+    }
+
+    .wrapperwrapper>.wrapper>.shell>.blob:nth-child(2) {
+      background-color: hsl(0, 100%, 50%);
+      /* 亮红色 */
+      background-image: linear-gradient(hsl(0, 100%, 50%), hsl(0, 100%, 70%), hsl(0, 100%, 50%));
+      rotate: 60deg;
+      scale: 0.95;
+    }
+
+    .wrapperwrapper>.wrapper>.shell>.blob:nth-child(3) {
+      background-color: hsl(120, 100%, 35%);
+      /* 亮绿色 */
+      background-image: linear-gradient(hsl(120, 100%, 35%), hsl(120, 100%, 55%), hsl(120, 100%, 35%));
+      rotate: 90deg;
+      scale: 0.97;
+    }
+
+    .wrapperwrapper>.wrapper>.shell>.blob:nth-child(4) {
+      background-color: hsl(300, 100%, 50%);
+      /* 亮紫色 */
+      background-image: linear-gradient(hsl(300, 100%, 50%), hsl(300, 100%, 70%), hsl(300, 100%, 50%));
+      rotate: 120deg;
+      scale: 1.02;
+    }
+
+
+    @keyframes gua-default-spin {
+      0% {
+        transform: rotate(0deg);
+      }
+
+      20% {
+        transform: rotate(72deg);
+      }
+
+      40% {
+        transform: rotate(144deg);
+      }
+
+      60% {
+        transform: rotate(216deg);
+      }
+
+      80% {
+        transform: rotate(288deg);
+      }
+
+      100% {
+        transform: rotate(360deg);
+      }
+    }
+  </style>
 </head>
 
 <body>
-  <div id="root"></div>
+  <div id="root">
+    <div class='wrapperwrapper'>
+      <div class='wrapper'>
+        <div class=shell>
+          <div class='blob'></div>
+          <div class='blob'></div>
+          <div class='blob'></div>
+          <div class='blob'></div>
+        </div>
+      </div>
+    </div>
+  </div>
   <script type="module" src="/src/main.tsx"></script>
 </body>
 

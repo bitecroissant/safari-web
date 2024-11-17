@@ -1,0 +1,109 @@
+.wrapperwrapper {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 100vh;
+    background: #111;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    .wrapper {
+        --spin-animation-time: 3s;
+        --blod-border-width: 8px;
+        --blod-height: 70px;
+        --blod-blur: 10px;
+        width: 45%;
+        aspect-ratio: 1;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+
+        .shell {
+            display: grid;
+            position: relative;
+            animation: spin infinite var(--spin-animation-time) linear;
+            grid-area: stack;
+
+            .blob {
+                --border-radius: 115% 140% 145% 110% / 125% 140% 110% 125%;
+                aspect-ratio: 1;
+                display: block;
+                grid-area: stack;
+                background-repeat: no-repeat;
+                background-position: center;
+                border: var(--blod-border-width) solid transparent;
+                border-radius: var(--border-radius, 50%);
+                mask-image:
+                    linear-gradient(transparent, transparent),
+                    linear-gradient(black, white);
+                mask-clip: padding-box, border-box;
+                mask-composite: intersect;
+                mix-blend-mode: screen;
+                height: var(--blod-height);
+                filter: blur(var(--blod-blur));
+            }
+
+            .blob:nth-child(1) {
+                background-color: hsl(240, 100%, 50%);
+                /* 亮蓝色 */
+                background-image: linear-gradient(hsl(240, 100%, 50%), hsl(240, 100%, 70%), hsl(240, 100%, 50%));
+                rotate: 30deg;
+                scale: 1.03;
+            }
+
+            .blob:nth-child(2) {
+                background-color: hsl(0, 100%, 50%);
+                /* 亮红色 */
+                background-image: linear-gradient(hsl(0, 100%, 50%), hsl(0, 100%, 70%), hsl(0, 100%, 50%));
+                rotate: 60deg;
+                scale: 0.95;
+            }
+
+            .blob:nth-child(3) {
+                background-color: hsl(120, 100%, 35%);
+                /* 亮绿色 */
+                background-image: linear-gradient(hsl(120, 100%, 35%), hsl(120, 100%, 55%), hsl(120, 100%, 35%));
+                rotate: 90deg;
+                scale: 0.97;
+            }
+
+            .blob:nth-child(4) {
+                background-color: hsl(300, 100%, 50%);
+                /* 亮紫色 */
+                background-image: linear-gradient(hsl(300, 100%, 50%), hsl(300, 100%, 70%), hsl(300, 100%, 50%));
+                rotate: 120deg;
+                scale: 1.02;
+            }
+        }
+
+        @keyframes spin {
+
+            0% {
+                transform: rotate(0deg);
+            }
+
+            20% {
+                transform: rotate(72deg);
+            }
+
+            40% {
+                transform: rotate(144deg);
+            }
+
+            60% {
+                transform: rotate(216deg);
+            }
+
+            80% {
+                transform: rotate(288deg);
+            }
+
+            100% {
+                transform: rotate(360deg);
+            }
+
+        }
+    }
+}

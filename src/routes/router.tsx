@@ -5,6 +5,7 @@ import { EventDates } from "../pages/EventDatesPage";
 import { PoetryLinesPage } from "../pages/PoetryLinesPage";
 import { LuPostPage } from "../pages/LuPostPage";
 import { PoetryLinesEditPage } from "../pages/PoetryLinesEditPage";
+import { DailyBoard } from "../pages/DailyBoard";
 
 export const router = createBrowserRouter([
     { path: '/', element: <Root /> },
@@ -31,6 +32,10 @@ export const router = createBrowserRouter([
             {
                 path: '/lulupo',
                 element: <LuPostPage />,
+            },
+            {
+                path: '/winter-magic',
+                element: <DailyBoard />
             }
         ]
     }
