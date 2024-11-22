@@ -6,6 +6,7 @@ import { PoetryLinesPage } from "../pages/PoetryLinesPage";
 import { LuPostPage } from "../pages/LuPostPage";
 import { PoetryLinesEditPage } from "../pages/PoetryLinesEditPage";
 import { DailyBoard } from "../pages/DailyBoard";
+import { SginInPage } from "../pages/SignInPage";
 
 export const router = createBrowserRouter([
     { path: '/', element: <Root /> },
@@ -36,6 +37,10 @@ export const router = createBrowserRouter([
             {
                 path: '/winter-magic',
                 element: <DailyBoard />
+            },
+            {
+                path: '/sentry',
+                element: <SginInPage />
             }
         ]
     }

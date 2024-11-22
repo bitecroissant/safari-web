@@ -1,57 +1,62 @@
 :root {
-    font-size: 14px;
-    --font-family-sans: "Lato", -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
-  
-    --line-height-headers: 1.1;
-    --line-height-body: 1.5;
-  
-    --font-size-xs: 0.75rem;
-    --font-size-s: 0.875rem;
-    --font-size-m: 1rem; // 16px
-    --font-size-l: 1.125rem;
-    --font-size-xl: 1.25rem;
-    --font-size-xxl: 1.5rem;
-    --font-size-xxxl: 2rem;
-    --font-size-xxxxl: 2.5rem;
-  
-    --color-text-header: hsl(0, 1%, 16%);
-    --color-text-body: hsl(0, 5%, 25%);
-    --color-text-muted: hsl(0, 1%, 44%);
-  
-    --space-xxxs: 0.25rem; // 4px
-    --space-xxs: 0.375rem;
-    --space-xs: 0.5rem;
-    --space-s: 0.75rem;
-    --space-m: 1rem;
-    --space-l: 1.5rem;
-    --space-xl: 2rem;
-    --space-xxl: 2.5rem;
-    --space-xxxl: 3rem;
-    --space-xxxxxl: 4rem;
-    --space-poetryline: 24rem;
-  
-    --color-primary: hsl(350, 67%, 50%);
-    --color-primary-rotate: hsl(10, 73%, 54%);
-    --color-primary-bg: hsl(0, 85%, 96%);
-    --color-secondary: hsl(101, 45%, 56%);
-    --color-secondary-rotate: hsl(120, 45%, 56%);
-    --color-tertiary: hsl(49, 89%, 64%);
-    --color-tertiary-rotate: hsl(60, 83%, 60%);
-    --color-glint: hsl(210, 100%, 82%);
-    --color-glint-rotate: hsl(150, 94%, 78%);
-    --color-white: hsl(0, 0%, 100%);
-    --color-background: hsl(30, 50%, 98%);
-    --color-light: hsl(0, 6%, 93%);
-    --color-dark: var(--color-text-header);
-  
-  
-    // Border radius
-    --border-radius: 0.375rem;
-  
-    // Border
-    --border: 2px solid var(--color-light);
-  
-    // Shadows
-    --shadow-large:  2px 4px 10px hsl(0 0% 0% / 0.1);
-    --shadow-small:  1px 3px 6px hsl(0 0% 0% / 0.1);
-  }
+  font-size: 16px;
+  --font-family-sans: -apple-system,BlinkMacSystemFont,Helvetica Neue,Helvetica,Segoe UI,Arial,Roboto,PingFang SC,miui,Hiragino Sans GB,Microsoft Yahei,sans-serif;
+
+  --line-height-headers: 1.1;
+  --line-height-body: 1.5;
+
+  --font-size-xs: 0.75rem;
+  --font-size-s: 0.875rem;
+  --font-size-m: 1rem; // 16px
+  --font-size-l: 1.125rem;
+  --font-size-xl: 1.25rem;
+  --font-size-xxl: 1.5rem;
+  --font-size-xxxl: 2rem;
+  --font-size-xxxxl: 2.5rem;
+
+  --color-text-header: hsl(0, 1%, 16%);
+  --color-text-body: hsl(0, 5%, 25%);
+  --color-text-muted: hsl(0, 1%, 44%);
+
+  --space-xxxs: 0.25rem; // 4px
+  --space-xxs: 0.375rem;
+  --space-xs: 0.5rem;
+  --space-s: 0.75rem;
+  --space-m: 1rem;
+  --space-l: 1.5rem;
+  --space-xl: 2rem;
+  --space-xxl: 2.5rem;
+  --space-xxxl: 3rem;
+  --space-xxxxxl: 4rem;
+  --space-poetryline: 24rem;
+
+  --color-primary: hsl(350, 67%, 50%);
+  --color-primary-rotate: hsl(10, 73%, 54%);
+  --color-primary-bg: hsl(0, 85%, 96%);
+  --color-secondary: hsl(101, 45%, 56%);
+  --color-secondary-rotate: hsl(120, 45%, 56%);
+  --color-tertiary: hsl(49, 89%, 64%);
+  --color-tertiary-rotate: hsl(60, 83%, 60%);
+  --color-glint: hsl(210, 100%, 82%);
+  --color-glint-rotate: hsl(150, 94%, 78%);
+  --color-white: hsl(0, 0%, 100%);
+  // --color-background: hsl(30, 50%, 98%);
+  --color-light: hsl(0, 6%, 93%);
+  --color-dark: var(--color-text-header);
+
+
+  // Border radius
+  --border-radius: 0.375rem;
+
+  // Border
+  --border: 2px solid var(--color-light);
+
+  // Shadows
+  --shadow-large: 2px 4px 10px hsl(0 0% 0% / 0.1);
+  --shadow-small: 1px 3px 6px hsl(0 0% 0% / 0.1);
+
+
+  // Myself
+  --color-background: #EFF6F9;
+  --color-background-rotated: #EEF5FE;
+}
