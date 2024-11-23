@@ -44,7 +44,8 @@ export const PoetryLinesPage: React.FC = () => {
     const [destorying, setDestorying] = useState(false)
 
     const [selectedTab, setSelectedTab] = useState(SHOW_GROUP[0])
-    const handleTabChange = (event: React.SyntheticEvent, newValue: string) => {
+    const handleTabChange = (e: React.SyntheticEvent, newValue: string) => {
+        e.preventDefault()
         setSelectedTab(newValue)
     }
 
