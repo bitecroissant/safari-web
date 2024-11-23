@@ -1,40 +1,60 @@
-import lottie from 'lottie-web'
-import animationData from '../assets/lottie/sentry.json'
-import { useEffect, useRef, useState } from 'react'
-import { Dialog, DialogTitle } from '@mui/material'
-import s from './SignInPage.module.scss'
-
+import { Button, Dialog, DialogActions, DialogContent, DialogTitle, TextField } from '@mui/material'
+import SendIcon from '@mui/icons-material/Send'
+import { SubmitHandler, useForm } from 'react-hook-form'
+import { useAjax } from '../lib/ajax'
+import { toast } from 'react-toastify'
+import { Icon } from '../components/Icon'
+import { useState } from 'react'
+import { useNavigate, useSearchParams } from 'react-router-dom'
 
 export const SginInPage: React.FC = () => {
-    const divRef = useRef<HTMLDivElement>(null)
-    const initialized = useRef(false)
+    const nav = useNavigate()
+    const [search] = useSearchParams()
 
-    useEffect(() => {
-        if (!divRef.current) { return }
-        if (initialized.current) { return }
-        console.log('run once')
-        lottie.loadAnimation({
-            container: divRef.current as any, // 动画容器DOM元素
-            renderer: 'svg', // 渲染格式
-            loop: true, // 循环播放
-            autoplay: true, // 自动播放
-            animationData: animationData, // 动画JSON数据
-        });
-        initialized.current = true
-    }, [])
+    const [loading, setLoading] = useState(false)
+    const { post } = useAjax()
+    const { register, handleSubmit } = useForm<UserTokens>()
 
+
+    const createSession: SubmitHandler<UserTokens> = async (formData) => {
+        try {
+            setLoading(true)
+            const response = (await post<UserTokens>("/sessions", formData)).data
+            setTimeout(async () => {
+                setLoading(false)
+                const jwt = response.jwt
+                localStorage.setItem('jwt', jwt)
+                const from = search.get('from') || '/items'
+                nav(from)
+            }, 2000)
+        } catch (err) {
+            toast("📎 芝麻开不了门！")
+            setLoading(false)
+        }
+    }
 
     return (
         <>
-            <div flex justify-center items-center >
-            </div>
             <Dialog open={true} >
                 <DialogTitle>
-                    <div className={s.title}>
-                        <span>口令</span>
-                        <div ref={divRef} className={s.lockAnimation}></div>
+                    <div flex justify-center items-center>
+                        <span>请输入口令：</span>
                     </div>
                 </DialogTitle>
+
+                <DialogContent>
+                    <form >
+                        <TextField autoFocus margin='dense' id="token" label="口令" type="text"
+                            fullWidth variant="standard"  {...register("token", { required: true })} />
+                    </form>
+                </DialogContent>
+
+                <DialogActions>
+                    <Button type="submit" onClick={handleSubmit(createSession)} endIcon={loading ? <Icon name="loading" className='animate-spin' /> : <SendIcon />}
+                        disabled={loading}>
+                        <span>{loading ? '验证中' : '验证口令'}</span>
+                    </Button>
+                </DialogActions>
             </Dialog>
         </>
     )

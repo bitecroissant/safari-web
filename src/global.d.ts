@@ -29,4 +29,5 @@ type EventDatesTypes = {
 type UserTokens = {
     user: string
     token: string
+	jwt: string
 }
