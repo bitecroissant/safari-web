@@ -1,6 +1,8 @@
 import lottie from 'lottie-web'
 import animationData from '../assets/lottie/sentry.json'
 import { useEffect, useRef, useState } from 'react'
+import { Dialog, DialogTitle } from '@mui/material'
+import s from './SignInPage.module.scss'
 
 
 export const SginInPage: React.FC = () => {
@@ -19,17 +21,21 @@ export const SginInPage: React.FC = () => {
             animationData: animationData, // 动画JSON数据
         });
         initialized.current = true
-    })
+    }, [])
 
 
     return (
         <>
-            <div ref={divRef} w-200px ></div>
-            <ul
-                mt="[var(--space-xl)]"
-                flex flex-col flex-wrap gap-x="[var(--space-l)]"
-            >
-            </ul>
+            <div flex justify-center items-center >
+            </div>
+            <Dialog open={true} >
+                <DialogTitle>
+                    <div className={s.title}>
+                        <span>口令</span>
+                        <div ref={divRef} className={s.lockAnimation}></div>
+                    </div>
+                </DialogTitle>
+            </Dialog>
         </>
     )
 }

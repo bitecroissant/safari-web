@@ -7,12 +7,24 @@ import { LuPostPage } from "../pages/LuPostPage";
 import { PoetryLinesEditPage } from "../pages/PoetryLinesEditPage";
 import { DailyBoard } from "../pages/DailyBoard";
 import { SginInPage } from "../pages/SignInPage";
+import { ajax } from "../lib/ajax";
+import { ErrorUnauthorized } from "../errors";
+import { AuthErrorPage } from "../pages/AuthErrorPage";
 
 export const router = createBrowserRouter([
+
     { path: '/', element: <Root /> },
+    { path: '/sentry', element: <SginInPage /> },
     {
         path: '/',
         element: <Outlet />,
+        errorElement: <AuthErrorPage />,
+        loader: async () => {
+            return await ajax.get<UserTokens>('/me')
+                .catch((e) => {
+                    if (e.response?.status === 403) { throw new ErrorUnauthorized() }
+                })
+        },
         children: [
             {
                 path: '/solar-terms',

@@ -1,0 +1,13 @@
+.title {
+    position: relative;
+    width: 330px;
+    .lockAnimation {
+        position: absolute;
+        width: 200px;
+        top: -200px;
+        left: 75px;
+        svg {
+            z-index: 999;
+        }
+    }
+}

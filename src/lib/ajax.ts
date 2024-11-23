@@ -8,6 +8,8 @@ const axiosInstance = axios.create({
     timeout: 5000,
 })
 
+export { axiosInstance as ajax }
+
 export const useAjax = () => {
     const onHttpError = (err: AxiosError) => {
         throw err

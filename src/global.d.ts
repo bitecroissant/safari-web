@@ -25,3 +25,8 @@ type EventDatesTypes = {
 	eventName: string
 	happenAt: string
 }
+
+type UserTokens = {
+    user: string
+    token: string
+}
