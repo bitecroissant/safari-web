@@ -24,7 +24,7 @@ export const SginInPage: React.FC = () => {
                 setLoading(false)
                 const jwt = response.jwt
                 localStorage.setItem('jwt', jwt)
-                const from = search.get('from') || '/items'
+                const from = search.get('from') || '/winter-magic'
                 nav(from)
             }, 2000)
         } catch (err) {
