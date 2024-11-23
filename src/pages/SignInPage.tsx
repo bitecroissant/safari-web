@@ -20,13 +20,10 @@ export const SginInPage: React.FC = () => {
         try {
             setLoading(true)
             const response = (await post<UserTokens>("/sessions", formData)).data
-            setTimeout(async () => {
-                setLoading(false)
-                const jwt = response.jwt
-                localStorage.setItem('jwt', jwt)
-                const from = search.get('from') || '/winter-magic'
-                nav(from)
-            }, 2000)
+            const jwt = response.jwt
+            localStorage.setItem('jwt', jwt)
+            const from = search.get('from') || '/winter-magic'
+            nav(from)
         } catch (err) {
             toast("📎 芝麻开不了门！")
             setLoading(false)
