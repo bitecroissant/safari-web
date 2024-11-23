@@ -36,7 +36,7 @@ export const LuPostPage: React.FC = () => {
         <>
             
             <header>
-                <Icon name="lu-big2" className={c("h-200px w-auto", s.running)} />
+                <Icon name="lu-big-3" className={c("h-200px w-auto", s.running)} />
             </header>
             <h4>陆陆投递窗</h4>
             <form onSubmit={handleSubmit(createPoetryLine)}
