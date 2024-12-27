@@ -1,7 +1,7 @@
 import axios, { AxiosError, AxiosRequestConfig } from "axios"
 
 const axiosInstance = axios.create({
-    baseURL: isDev ? 'http://127.0.0.1:8787' : 'https://api.muggle.cc',
+    baseURL: isDev ? 'http://127.0.0.1:8787' : 'https://api.longislandicedteanight.xyz',
     headers: {
         'Content-Type': 'application/json',
     },
